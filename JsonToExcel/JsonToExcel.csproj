@@ -118,7 +118,6 @@
     <Compile Include="JsonToCsv\CommonUtilities.cs" />
     <Compile Include="JsonToCsv\IJsonToExcelConverter.cs" />
     <Compile Include="JsonToCsv\ChoJSONConverter.cs" />
-    <Compile Include="JsonToCsv\ServiceStackJsonConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

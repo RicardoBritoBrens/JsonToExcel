@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace JsonToExcel.JsonToCsv
 {
+    //TODO: PENDING TO ADD TEST USING ServiceStack
     public class ServiceStackJsonConverter
     {
         private FileInfo _inputFile;
@@ -25,14 +26,6 @@ namespace JsonToExcel.JsonToCsv
 
             Console.WriteLine("Converting...");
             Task.Delay(5000);
-
-            //using (var r = new ServiceStack.JSON.(_inputFile.FullName))
-            //{
-            //    using (var w = new ChoCSVWriter(_outputFile.FullName).WithFirstLineHeader())
-            //    {
-            //        w.Write(r);
-            //    }
-            //}
 
             Console.WriteLine();
             Task.Delay(5000);
