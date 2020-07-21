@@ -13,7 +13,7 @@ namespace JsonToExcel
             string inputFilePath;
             string outputFilePath;
 
-            ChoJSONConverter converter = new ChoJSONConverter();
+            var converter = new ChoJSONConverter();
 
             Console.Title = $"Json to CSV, version {CommonUtilities.GetSoftwareVersion()}";
 
@@ -21,9 +21,9 @@ namespace JsonToExcel
 
             if (Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".json"))
             {
-                string clipboardText = Clipboard.GetText(TextDataFormat.Text);
+                var clipboardText = Clipboard.GetText(TextDataFormat.Text);
 
-                Console.WriteLine($"¿ Are you triying to convert {clipboardText} to csv ? \n y = yes \n n = no \n\n");
+                Console.WriteLine($"¿ Are you trying to convert {clipboardText} to csv ? \n y = yes \n n = no \n\n");
 
                 var selectedOption = Console.ReadLine();
 
@@ -41,11 +41,31 @@ namespace JsonToExcel
                 }
 
                 Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
-            }
-            else if ((Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".csv"))
-                   || (Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".xlsx")))
+            }else  if((Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".csv"))
+                      || (Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".xlsx")))
             {
+                var clipboardText = Clipboard.GetText(TextDataFormat.Text);
+
+                Console.WriteLine($"¿ Are you trying to convert {clipboardText} to json ? \n y = yes \n n = no \n\n");
+
+                var selectedOption = Console.ReadLine();
+
+                if (selectedOption.Equals("y"))
+                {
+                    inputFilePath = clipboardText;
+                    converter.ConvertExcelToJson(new FileInfo(inputFilePath));
+                }
+                else if (selectedOption.Equals("n"))
+                {
+                    Console.WriteLine("Please give me the full file path of the json you want to convert to json");
+                    inputFilePath = Console.ReadLine();
+                    converter.ConvertExcelToJson(new FileInfo(inputFilePath));
+                    return;
+                }
+
+                Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
             }
+
             Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
             inputFilePath = Console.ReadLine();
             converter.ConvertJsonToExcel(new FileInfo(inputFilePath));

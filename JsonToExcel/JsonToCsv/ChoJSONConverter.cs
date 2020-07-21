@@ -54,6 +54,49 @@ namespace JsonToExcel.JsonToCsv
             Environment.Exit(0);
         }
 
+        public void ConvertExcelToJson(FileInfo inputFile)
+        {
+            _inputFile = inputFile;
+            _outputFile = new FileInfo($"{inputFile.Directory.FullName}\\output.json");
+
+            Console.WriteLine("Converting...");
+            Task.Delay(5000);
+
+            Console.WriteLine("Converting...");
+            Task.Delay(5000);
+
+            Console.WriteLine("Converting...");
+            Task.Delay(5000);
+
+            try
+            {
+                using (var r = new ChoCSVReader(_inputFile.FullName).WithFirstLineHeader())
+                {
+                    using (var w = new ChoJSONWriter(_outputFile.FullName))
+                    {
+                        w.Write(r);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error => {ex.Message}");
+                Console.ReadKey();
+            }
+
+            Console.WriteLine();
+            Task.Delay(5000);
+
+            Console.WriteLine();
+            Task.Delay(5000);
+
+            Console.WriteLine($"Done... check the path {_outputFile.FullName}");
+            Console.WriteLine("\n Press any key to close this window");
+
+            Task.Delay(5000);
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
         public FileInfo LoadFileInfoJson(FileInfo filePath)
         {
             _inputFile = filePath;
