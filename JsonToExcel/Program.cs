@@ -41,8 +41,9 @@ namespace JsonToExcel
                 }
 
                 Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
-            }else  if((Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".csv"))
-                      || (Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".xlsx")))
+            }
+            else if ((Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".csv"))
+                    || (Clipboard.ContainsText(TextDataFormat.Text) && Clipboard.GetText(TextDataFormat.Text).Contains(".xlsx")))
             {
                 var clipboardText = Clipboard.GetText(TextDataFormat.Text);
 

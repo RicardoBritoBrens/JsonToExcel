@@ -10,6 +10,5 @@ namespace JsonToExcel
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             return fileVersionInfo.FileVersion;
         }
-
     }
 }
