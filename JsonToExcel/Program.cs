@@ -15,7 +15,7 @@ namespace JsonToExcel
 
             var converter = new ChoJSONConverter();
 
-            Console.Title = $"Json to CSV, version {CommonUtilities.GetSoftwareVersion()}";
+            Console.Title = $"Json to CSV, version {Project.GetSoftwareVersion()}";
 
             Console.WriteLine("\n\n\n");
 
