@@ -10,8 +10,7 @@ namespace JsonToExcel
         [STAThread]
         private static void Main(string[] args)
         {
-            string inputFilePath;
-            string outputFilePath;
+            string inputFilePath = "/Users/mac/Downloads/PlantillaDeSincronizacionDeDatosNinos.csv";
 
             var converter = new ChoJSONConverter();
 
@@ -30,13 +29,13 @@ namespace JsonToExcel
                 if (selectedOption.Equals("y"))
                 {
                     inputFilePath = clipboardText;
-                    converter.ConvertJsonToExcel(new FileInfo(inputFilePath));
+                    converter.ConvertJsonToCsv(new FileInfo(inputFilePath));
                 }
                 else if (selectedOption.Equals("n"))
                 {
                     Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
                     inputFilePath = Console.ReadLine();
-                    converter.ConvertJsonToExcel(new FileInfo(inputFilePath));
+                    converter.ConvertJsonToCsv(new FileInfo(inputFilePath));
                     return;
                 }
 
@@ -54,13 +53,13 @@ namespace JsonToExcel
                 if (selectedOption.Equals("y"))
                 {
                     inputFilePath = clipboardText;
-                    converter.ConvertExcelToJson(new FileInfo(inputFilePath));
+                    converter.ConvertCsvToJson(new FileInfo(inputFilePath));
                 }
                 else if (selectedOption.Equals("n"))
                 {
                     Console.WriteLine("Please give me the full file path of the json you want to convert to json");
                     inputFilePath = Console.ReadLine();
-                    converter.ConvertExcelToJson(new FileInfo(inputFilePath));
+                    converter.ConvertCsvToJson(new FileInfo(inputFilePath));
                     return;
                 }
 
@@ -69,7 +68,7 @@ namespace JsonToExcel
 
             Console.WriteLine("Please give me the full file path of the json you want to convert to csv");
             inputFilePath = Console.ReadLine();
-            converter.ConvertJsonToExcel(new FileInfo(inputFilePath));
+            converter.ConvertJsonToCsv(new FileInfo("/Users/mac/Downloads/PlantillaDeSincronizacionDeDatosNinos.csv"));
             return;
         }
     }

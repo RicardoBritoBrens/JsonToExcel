@@ -4,6 +4,6 @@ namespace JsonToExcel
 {
     public interface IJsonToCvsConverter
     {
-        void ConvertJsonToCvs(FileInfo inputFile);
+        void ConvertJsonToCsv(FileInfo inputFile);
     }
 }

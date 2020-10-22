@@ -10,7 +10,7 @@ namespace JsonToExcel.JsonToCsv
         private FileInfo _inputFile;
         private FileInfo _outputFile;
 
-        public void ConvertJsonToCvs(FileInfo inputfile)
+        public void ConvertJsonToCsv(FileInfo inputfile)
         {
             _inputFile = inputfile;
             _outputFile = new FileInfo(Path.Combine(inputfile.Directory.FullName, Constant.CsvOutputFile));
@@ -19,11 +19,13 @@ namespace JsonToExcel.JsonToCsv
 
             try
             {
-                using (var reader = new ChoJSONReader(_inputFile.FullName))
-                using (var writer = new ChoCSVWriter(_outputFile.FullName).WithFirstLineHeader())
+                using (var reader = new ChoJSONReader(_inputFile.FullName)) 
                 {
-                    writer.Write(reader);
-                }
+                    using (var writer = new ChoCSVWriter(_outputFile.FullName).WithFirstLineHeader())
+                    {
+                        writer.Write(reader);
+                    }
+                }                
             }
             catch (Exception exception)
             {
@@ -35,7 +37,7 @@ namespace JsonToExcel.JsonToCsv
             Environment.Exit(0);
         }
 
-        public void ConvertCvsToJson(FileInfo inputFile)
+        public void ConvertCsvToJson(FileInfo inputFile)
         {
             _inputFile = inputFile;
             _outputFile = new FileInfo(Path.Combine(inputFile.Directory.FullName, Constant.JsonOutputFile));
@@ -44,11 +46,14 @@ namespace JsonToExcel.JsonToCsv
 
             try
             {
-                using (var reader = new ChoCSVReader(_inputFile.FullName).WithFirstLineHeader())
-                using (var writer = new ChoJSONWriter(_outputFile.FullName))
+                using (var reader = new ChoCSVReader(_inputFile.FullName).WithFirstLineHeader()) 
                 {
-                    writer.Write(reader);
+                    using (var writer = new ChoJSONWriter(_outputFile.FullName))
+                    {
+                        writer.Write(reader);
+                    }
                 }
+                
             }
             catch (Exception exception)
             {

@@ -6,7 +6,7 @@
         private static string JsonExtension => ".json";
         private static string CsvExtension => ".Csv";
 
-        public static string JsonOutputFile => $"{Output}.{JsonExtension}";
-        public static string CsvOutputFile => $"{Output}.{CsvExtension}";
+        public static string JsonOutputFile => $"{Output}{JsonExtension}";
+        public static string CsvOutputFile => $"{Output}{CsvExtension}";
     }
 }
